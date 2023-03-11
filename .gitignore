@@ -1,0 +1,8 @@
+.idea/
+.pyc
+__pycache__
+.ipynb_checkpoints
+data/
+case_study
+Example Project
+Untitled.ipynb
