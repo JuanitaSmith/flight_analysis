@@ -1,5 +1,4 @@
 import numpy as np
-import pandas as pd
 import os
 
 
@@ -45,24 +44,11 @@ def create_folder(folder_name):
 
     if not os.path.exists(folder_name):
         os.makedirs(folder_name)
-        
-        
-def convert_time(col):
 
-    # Convert column to string, remove any float decimals, pad with leading zero's and correct missing fields converstions
-    col =  col.astype('str').str.replace('.0', '', regex=False).str.zfill(4).replace('0nan', None)
 
-    # Some minute fields are incorrect, covert minute = 60 to minute = 59
-    col  = np.where(col.str[-2:] == '60',  col .str[:2] + '59', col)
-
-    # convert column to datetime
-#     col = pd.to_datetime(col , format='%H%M', errors='raise')   
-#     col = pd.to_datetime(col, format='%H%M') - pd.to_datetime(col, format='%H%M').normalize()    
-    
-    return col   
-
-def change_width(ax, new_value) :
-    for patch in ax.patches :
+def change_width(ax, new_value):
+    """ change width of bar plot"""
+    for patch in ax.patches:
         current_width = patch.get_width()
         diff = current_width - new_value
 
